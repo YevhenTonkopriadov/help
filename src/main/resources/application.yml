@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/helpbd
+    username: helpApplication
+    # FIXME: remove password from here
+    password: Vz73ka4#+U
+    driver-class-name: com.mysql.cj.jdbc.Driver
+

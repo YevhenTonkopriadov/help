@@ -22,6 +22,8 @@ function doCompletion() {
         req.open("GET", url, true);
         req.onreadystatechange = callback;
         req.send(null);
+    } else {
+        clearTable()
     }
 }
 
@@ -45,14 +47,14 @@ function callback() {
                     let employeeListJson = req.response;
                     let employeeList = JSON.parse(employeeListJson);
                     for(var i=0;i<employeeList.length; i++){
-                        appendComposer(employeeList[i].id,employeeList[i].fio,employeeList[i].email);
+                        appendComposer(employeeList[i].id,employeeList[i].fio);
                     }
                 }
         }
     }
 }
 
-function appendComposer(id,fio,email) {
+function appendComposer(id,fio) {
     let cell;
     let row;
     if (isIE) {
@@ -71,7 +73,7 @@ function appendComposer(id,fio,email) {
     linkElement = document.createElement("a");
     linkElement.className = "popupItem";
     linkElement.setAttribute("href", "addNewProblemByUserId/" + id);
-    linkElement.appendChild(document.createTextNode(fio + " " + email));
+    linkElement.appendChild(document.createTextNode(fio));
     cell.appendChild(linkElement);
 }
 
@@ -92,8 +94,7 @@ function getElementY(element){
 
 function clearTable() {
     arrayTr = completeTable.getElementsByTagName("tr");
-    if (arrayTr.length > 2) {
-        completeTable.style.display = 'none';
+    if (arrayTr.length > 1) {
         for (var loop = arrayTr.length-1; loop > 1 ; loop--) {
             completeTable.removeChild(arrayTr[loop]);
         }

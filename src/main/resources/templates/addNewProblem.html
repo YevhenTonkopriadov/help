@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>IT-help MKIP</title>
+</head>
+<body>
+<form method="post" th:action="@{/addTask}" th:object="${task}">
+    <table>
+        <tr>
+            <td>
+                Виберіть тип проблеми зі списку:
+            </td>
+            <td>
+                <select name="typeOfProblem">
+                    <option th:each="typeOfProblem:${T(ua.gov.mkip.itHelp.model.enums.TypeOfProblem).values()}"
+                            th:text="${typeOfProblem.displayValue}" th:value="${typeOfProblem}"/>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Внесіть детальний опис проблеми:
+            </td>
+            <td>
+                <input th:field="*{descriptionOfProblem}" type="text"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input th:field="*{employee}" type="hidden"/>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Надіслати запит"/>
+</form>
+</body>
+</html>

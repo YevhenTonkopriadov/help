@@ -1,4 +1,4 @@
-package ua.gov.mkip.help;
+package ua.gov.mkip.itHelp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,6 +8,8 @@ public class HelpApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(HelpApplication.class, args);
+
+
     }
 
 }
